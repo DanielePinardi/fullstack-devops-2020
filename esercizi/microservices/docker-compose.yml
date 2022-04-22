@@ -19,3 +19,33 @@ services:
       - "traefik.http.routers.microservice-hex2rgb.middlewares=microservice-hex2rgb-stripprefix"
       - "traefik.http.middlewares.microservice-hex2rgb-stripprefix.stripprefix.prefixes=/microservice-hex2rgb"
       - "traefik.http.services.microservice-hex2rgb.loadbalancer.server.port=3000"
+
+  microservice-hsl2hex:
+    build: microservice-HSL2HEX
+    restart: "no"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.microservice-hsl2hex.rule=PathPrefix(`/microservice-hsl2hex`)"
+      - "traefik.http.routers.microservice-hsl2hex.middlewares=microservice-hsl2hex-stripprefix"
+      - "traefik.http.middlewares.microservice-hsl2hex-stripprefix.stripprefix.prefixes=/microservice-hsl2hex"
+      - "traefik.http.services.microservice-hsl2hex.loadbalancer.server.port=3000"
+
+  microservice-cmyk2hsl:
+    build: microservice-CMYK2HSL
+    restart: "no"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.microservice-cmyk2hsl.rule=PathPrefix(`/microservice-cmyk2hsl`)"
+      - "traefik.http.routers.microservice-cmyk2hsl.middlewares=microservice-cmyk2hsl-stripprefix"
+      - "traefik.http.middlewares.microservice-cmyk2hsl-stripprefix.stripprefix.prefixes=/microservice-cmyk2hsl"
+      - "traefik.http.services.microservice-cmyk2hsl.loadbalancer.server.port=3000"
+
+  microservice-rgb2cmyk:
+    build: microservice-RGB2CMYK
+    restart: "no"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.microservice-rgb2cmyk.rule=PathPrefix(`/microservice-rgb2cmyk`)"
+      - "traefik.http.routers.microservice-rgb2cmyk.middlewares=microservice-rgb2cmyk-stripprefix"
+      - "traefik.http.middlewares.microservice-rgb2cmyk-stripprefix.stripprefix.prefixes=/microservice-rgb2cmyk"
+      - "traefik.http.services.microservice-rgb2cmyk.loadbalancer.server.port=3000"
