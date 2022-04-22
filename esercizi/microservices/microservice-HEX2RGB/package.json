@@ -10,7 +10,7 @@
     "email": "daniele.pinardi01@gmail.com"
   },
   "contributors": [],
-  "main": "microservice-HEX2RGB/src/HttpServer.js",
+  "main": "microservice-HEX2RGB/src/HttpServer.ts",
   "repository": {
     "type": "git",
     "url": ""
