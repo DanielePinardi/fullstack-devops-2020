@@ -1,0 +1,21 @@
+version: '3'
+services:
+  reverse-proxy:
+    image: traefik
+    command: --api.insecure=true --providers.docker --providers.docker.exposedByDefault=false
+    restart: "no"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  microservice-hex2rgb:
+    build: microservice-HEX2RGB
+    restart: "no"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.microservice-hex2rgb.rule=PathPrefix(`/microservice-hex2rgb`)"
+      - "traefik.http.routers.microservice-hex2rgb.middlewares=microservice-hex2rgb-stripprefix"
+      - "traefik.http.middlewares.microservice-hex2rgb-stripprefix.stripprefix.prefixes=/microservice-hex2rgb"
+      - "traefik.http.services.microservice-hex2rgb.loadbalancer.server.port=3000"
