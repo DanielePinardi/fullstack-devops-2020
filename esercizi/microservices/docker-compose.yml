@@ -10,12 +10,12 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  microservice-HEX2RGB:
+  microservice-hex2rgb:
     build: microservice-HEX2RGB
     restart: "no"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.microservice-HEX2RGB.rule=PathPrefix(`/microservice-HEX2RGB`)"
-      - "traefik.http.routers.microservice-HEX2RGB.middlewares=microservice-HEX2RGB-stripprefix"
-      - "traefik.http.middlewares.microservice-HEX2RGB-stripprefix.stripprefix.prefixes=/microservice-HEX2RGB"
-      - "traefik.http.services.microservice-HEX2RGB.loadbalancer.server.port=3000"
+      - "traefik.http.routers.microservice-hex2rgb.rule=PathPrefix(`/microservice-hex2rgb`)"
+      - "traefik.http.routers.microservice-hex2rgb.middlewares=microservice-hex2rgb-stripprefix"
+      - "traefik.http.middlewares.microservice-hex2rgb-stripprefix.stripprefix.prefixes=/microservice-hex2rgb"
+      - "traefik.http.services.microservice-hex2rgb.loadbalancer.server.port=3000"
